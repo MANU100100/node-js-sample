@@ -15,5 +15,11 @@ jobs:
             - name: Log in to Docker Hub
               run: |
                 echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-                docker image build -t manu100100/aws:manu .
-                docker push manu100100/aws:manu
+                docker image build -t manu100/aws:manu .
+                docker push manu100/aws:manu
+            - name: run ansible playbook
+              if: github.ref == 'refs/heads/master'
+              env:
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+              run: |
+                  ansible-playbook ansible.yml -i manu.txt --extra-vars "password=$password"

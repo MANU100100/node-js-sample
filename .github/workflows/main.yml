@@ -5,7 +5,7 @@ on:
 
 jobs:
     build:
-        runs-on: gowda
+        runs-on: hello
        
         steps:
            

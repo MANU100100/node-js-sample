@@ -7,7 +7,7 @@ jobs:
     build:
 
         runs-on: god
-        
+
 
       
        
@@ -20,8 +20,8 @@ jobs:
               run: |
                 echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-                docker image build -t manu100/project:manu .
-                docker push manu100/project:manu
+                docker image build -t manu100/aws:manu .
+                docker push manu100/aws:manu
 
                 
             - name: run ansible playbook

@@ -22,12 +22,11 @@ jobs:
                 docker image build -t manu100/project:manu .
                 docker push manu100/project:manu
 
-                docker image build -t manu100/gowda:manu .
-                docker push manu100/gowda:manu
+                
             - name: run ansible playbook
               if: github.ref == 'refs/heads/master'
               env:
                 password: ${{ secrets.DOCKER_PASSWORD }}
               run: |
-                  ansible-playbook ansible.yml -i manu.txt --extra-vars "password=$password"
+                  ansible-playbook ansible.yml -i manu.txt --extra-vars "password=$password"   
 

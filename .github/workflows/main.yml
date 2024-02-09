@@ -5,16 +5,30 @@ on:
 
 jobs:
     build:
+<<<<<<< HEAD
         runs-on: gowda
+=======
+        runs-on: hello
+>>>>>>> c2cf5518d9ae8247c4e452940a430abfffc31100
        
         steps:
-            - run: node --version
-            - run: npm --version
+           
             - uses: actions/checkout@v4
            
             
             - name: Log in to Docker Hub
               run: |
                 echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+<<<<<<< HEAD
                 docker image build -t manu100/project:manu .
                 docker push manu100/project:manu
+=======
+                docker image build -t manu100/gowda:manu .
+                docker push manu100/gowda:manu
+            - name: run ansible playbook
+              if: github.ref == 'refs/heads/master'
+              env:
+                password: ${{ secrets.DOCKER_PASSWORD }}
+              run: |
+                  ansible-playbook ansible.yml -i manu.txt --extra-vars "password=$password"
+>>>>>>> c2cf5518d9ae8247c4e452940a430abfffc31100

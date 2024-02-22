@@ -29,5 +29,5 @@ jobs:
               env:
                 password: ${{ secrets.DOCKER_PASSWORD }}
               run: |
-                  ansible-playbook ansible.yml -i manu.txt --extra-vars "password=$password"   
+                ansible-playbook ansible.yml -i manu.txt --extra-vars "password=$password"   
 

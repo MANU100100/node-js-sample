@@ -6,7 +6,7 @@ on:
 jobs:
     build:
 
-        runs-on: index
+        runs-on: ubu
 
 
       
